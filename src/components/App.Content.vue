@@ -2,24 +2,36 @@
 
 import { store } from './store';
 import cardFilm from './cardFilm.vue'
+import AppSeries from './AppSeries.vue';
 import axios from 'axios'
 export default {
   
   components:{
     cardFilm,
+    AppSeries,
   },
   data(){
     return{
         store,
-        searchText: '',
+        search: '',
     }
   },
   methods:{
-    search(input){
+    searchFilm(input){
         let apiCall = store.api_url + input;
         axios.get(apiCall).then((response) => {
             store.movieList = response.data.results
         })
+    },
+    searchSerie(input){
+      let apiSerie = store.apiSerie + store.api_key + input;
+      axios.get(apiSerie).then((response)=>{
+        store.serieList = response.data.results
+      })
+    },
+    ricercaTutto(input){
+      this.searchFilm(input);
+      this.searchSerie(input);
     }
   }
 }
@@ -29,18 +41,19 @@ export default {
     <div class="row">
 
         <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="search films " aria-label="Recipient's username" aria-describedby="button-addon2"
-      v-model="searchText" @keyup.enter="search(searchText)">
-      <button class="btn btn-outline-secondary" type="button" id="button-addon2" @click="search(searchText)">search</button>
+            <input type="text" class="form-control" placeholder="Search films or series  " aria-label="Recipient's username" aria-describedby="button-addon2"
+      v-model="search" @keyup.enter="ricercaTutto(search)">
+      <button class="btn btn-outline-secondary" type="button" id="button-addon2" @click="ricercaTutto(search)">Search</button>
 
     </div>
 
 </div>
 <div>
-   film founded {{store.movieList.length}} 
+    found {{store.movieList.length}} contents
 </div>
 <div class="row row-cols-5 gap-5 justify-content-between">
     <cardFilm v-for="(item, index) in store.movieList" :key="index" :movie="item"></cardFilm>
+    <AppSeries v-for="(item, index) in store.serieList" :key="index" :cardSerie="item"></AppSeries>
 
 </div>
 </div>
