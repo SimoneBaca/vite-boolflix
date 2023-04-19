@@ -16,14 +16,14 @@ export default {
 <div class="col card">
 
 <div class="card-container">
-    <h3 class="card-title">{{cardSerie.title}}</h3>
+    <h3 class="card-title">{{cardSerie.name}}</h3>
 </div>
 
 <ul class="list-series">
 
     <li class="list-series-item">
         <div>
-            titolo {{cardSerie.original_title}}
+            titolo {{cardSerie.original_name}}
         </div>
     </li>
     <li class="list-series-item">
@@ -33,7 +33,7 @@ export default {
     </li>
     <li class="list-series-item">
         <div>
-            voto {{cardSerie.average}}
+            voto {{cardSerie.vote_average}}
         </div>
     </li>
 </ul>

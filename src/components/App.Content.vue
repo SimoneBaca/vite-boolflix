@@ -24,9 +24,8 @@ export default {
         })
     },
     searchSerie(input){
-      let apiSerie = store.apiSerie + store.api_key + input;
-      axios.get(apiSerie).then((response)=>{
-        store.serieList = response.data.results
+        let Serie = store.apiSerie + input;
+        axios.get(Serie).then((response)=>{
       })
     },
     ricercaTutto(input){
