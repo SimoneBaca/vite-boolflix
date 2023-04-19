@@ -16,7 +16,7 @@ export default {
   },
   methods:{
     search(input){
-        let apiCall = api_url + input;
+        let apiCall = store.api_url + input;
         axios.get(apiCall).then((response) => {
             store.movieList = response.data.results
         })
@@ -37,7 +37,7 @@ export default {
 
 </div>
 <div>
-   film founded {{store.movieList.lenght}} 
+   film founded {{store.movieList.length}} 
 </div>
 <div class="row row-cols-5 gap-5 justify-content-between">
     <cardFilm v-for="(item, index) in store.movieList" :key="index" :movie="item"></cardFilm>
