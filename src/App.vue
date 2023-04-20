@@ -1,10 +1,12 @@
 <script>
 import { store } from './store'
 import AppContent from './components/App.Content.vue';
+import AppHeader from './components/AppHeader.vue';
 export default {
   
   components:{
     AppContent,
+    AppHeader
   },
   data(){
     return{
@@ -15,7 +17,7 @@ export default {
 </script>
 <template lang="">
 <div>
-
+  <AppHeader></AppHeader>
 <AppContent></AppContent>
 </div>
 </template>
