@@ -21,6 +21,7 @@ export default {
 <AppContent></AppContent>
 </div>
 </template>
-<style lang="">
-
+<style lang="scss">
+@use './styles/partials/variable.scss' as *;
+  @use './styles/generals.scss' as *;
 </style>

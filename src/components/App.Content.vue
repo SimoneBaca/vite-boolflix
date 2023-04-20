@@ -1,34 +1,69 @@
 <script>
 import { store } from '../store';
-import cardFilm from './cardFilm.vue'
+import AppFilm from './cardFilm.vue';
 import AppSeries from './AppSeries.vue';
 import axios from 'axios'
 export default {
-  
   components:{
-    cardFilm,
+    AppFilm,
     AppSeries,
   },
   data(){
     return{
         store,
-       
+        
     }
   },
- 
+  
 }
 </script>
 <template lang="">
-<div class="container my-4">
-  <div>
-      found {{store.movieList.length}} contents
+<div class="container-content my-4">
+
+   <h1> Netflix films</h1>
+  <div class="movie-container">
+      <AppFilm v-for="(item, index) in store.movieList" :key="index" :movie="item"></AppFilm>
+  </div>
+  <h1>Netflix series</h1>
+  <div class="movie-container">
+      <AppSeries v-for="(item, index) in store.serieList" :key="index" :cardSerie="item"></AppSeries>
+  
   </div>
 
-   <div class="row row-cols-5 gap-5 justify-content-between">
-      <cardFilm v-for="(item, index) in store.movieList" :key="index" :movie="item"></cardFilm>
-      <AppSeries v-for="(item, index) in store.serieList" :key="index" :cardSerie="item"></AppSeries>
-   </div>
 </div>
+
 </template>
-<style lang="">
+<style lang="scss">
+@use '../styles/partials/variable.scss' as *;
+.container-content{
+  background-color: $black;
+  width: 100%;
+  h1{
+    color: $secondary-color;
+    margin-left: 1rem;
+  }
+  .movie-container{
+    width: 100%;
+    display: flex;
+    justify-content:space-between;
+    padding: 1rem;
+    overflow-x: scroll;
+   
+    
+    
+    
+    
+  }
+  ::-webkit-scrollbar{
+  width:0.8em;
+  height:0.8em;
+  background: #C63531;
+  margin-right: 10px;
+}
+::-webkit-scrollbar-thumb:hover{
+  background-color:white ;
+  border: none;
+}
+  
+}
 </style>
