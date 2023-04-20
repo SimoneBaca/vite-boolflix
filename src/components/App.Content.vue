@@ -1,6 +1,6 @@
 <script>
 
-import { store } from './store';
+import { store } from '../store';
 import cardFilm from './cardFilm.vue'
 import AppSeries from './AppSeries.vue';
 import axios from 'axios'

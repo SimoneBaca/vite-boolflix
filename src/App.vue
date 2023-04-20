@@ -1,5 +1,5 @@
 <script>
-import { store } from './components/store'
+import { store } from './store'
 import AppContent from './components/App.Content.vue';
 export default {
   
